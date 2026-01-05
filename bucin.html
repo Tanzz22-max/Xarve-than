@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Halaman Bucin 💘</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff7ea8, #ff4f82);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 40px;
+        }
+
+        .card {
+            margin: 40px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        #quote {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+            background-color: #ff2e6a;
+        }
+
+        /* hati animasi */
+        .heart {
+            position: fixed;
+            bottom: 0;
+            font-size: 24px;
+            animation: floatUp 3s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-500px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💗 Halaman Bucin 💗</h1>
+
+    <div class="card">
+        <p id="quote">Klik tombol untuk lihat quote bucin 😳</p>
+        <button onclick="randomQuote()">Acak Quote</button>
+        <button onclick="spawnHearts()">Banjir Hati 💖</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "Kamu itu wifi, makin dekat makin nempel.",
+            "Aku bukan siapa-siapa, tapi kalo sama kamu jadi berasa istimewa.",
+            "Senja aja kalah sama kamu, karena kamu lebih bikin tenang.",
+            "Kalau kamu senyum, hatiku auto restart jadi fresh.",
+            "Aku gak minta lebih, cukup kamu gak pergi."
+        ];
+
+        function randomQuote() {
+            const q = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById("quote").innerText = q;
+        }
+
+        function spawnHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerText = "💖";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+    </script>
+
+</body>
+</html>
